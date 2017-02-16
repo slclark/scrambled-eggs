@@ -3,6 +3,7 @@ This boilerplate is for converting websites into a repository that keeps WP file
 # Instructions for converting old sites to the new boilerplate:
 
 1.) copy/paste the old `wp-content` into /html directory
+
 2.) copy over the below files into /html
 
 `.htaccess`
