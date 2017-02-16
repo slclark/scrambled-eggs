@@ -1,4 +1,4 @@
-This boilerplate is for converting websites into a repository that keeps WP files out of version control.
+This boilerplate is for converting websites into a repository that keeps WP files out of version control. Download this repo and move original `wp-content` into it, and follow the instructions below.
 
 # Instructions for converting old sites to the new boilerplate:
 
