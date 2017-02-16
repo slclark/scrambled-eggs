@@ -28,6 +28,7 @@ This boilerplate is for converting websites into a repository that keeps WP file
 4. Make sure to also add to the `wp-config.php` the below code snippet:
 
 `// Enable auto security updates`
+
 `define('WP_AUTO_UPDATE_CORE', 'minor');`
 
 5. cd into `/html` and run composer install. When finished running, delete `wp-content` in the `wp` directory.
