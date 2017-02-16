@@ -1,0 +1,40 @@
+#ignore wordpress
+html/wp/
+
+#ignore composer vendor
+html/vendor/
+
+#ignore uploads
+html/wp-content/uploads/
+
+#do not ignore yoast seo vendor
+!/html/wp-content/plugins/wordpress-seo/vendor/
+
+#frontend ignores
+html/wp-content/themes/taco-theme/node_modules/
+html/wp-content/themes/taco-theme/_/.sass_cache
+.codekit-cache
+*.css.map
+*.js.map
+
+#general ignores
+*.log
+*.zip
+*.tar
+*.tar.gz
+*.lock
+*.scssc
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
