@@ -1,5 +1,5 @@
 #ignore wordpress
-html/wp/
+html/wordpress/
 
 #ignore composer vendor
 html/vendor/
