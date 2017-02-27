@@ -15,6 +15,7 @@ This boilerplate is for converting websites into a repository that keeps WP file
 3.) Add to the `wp-config.php` file the below code snippet:
 
 ```
+// define where wp-content is since wordpress is in its own directory not committed through version control
 define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 
 define('WP_DEFAULT_THEME', 'taco-theme');
@@ -24,9 +25,9 @@ define('WP_DEFAULT_THEME', 'taco-theme');
 
 4.) Make sure to also add to the `wp-config.php` the below code snippet, to enable minor updates on production:
 
-```// Enable auto security updates
-
-define('WP_AUTO_UPDATE_CORE', 'minor');```
+```
+define('WP_AUTO_UPDATE_CORE', 'minor');
+```
 
 ### Changes to `.htaccess`
 
@@ -48,13 +49,14 @@ define('WP_AUTO_UPDATE_CORE', 'minor');```
 # END WordPress
 ```
 
-5.) cd into `/html` and run composer install. When finished running, delete `wp-content` in the `wordpress` directory.
+5.) cd into `/html` and run `composer install`. When finished running, delete `wp-content` in the `wordpress` directory.
 
 6.) Deal with Taco and installing it so it works for the website (this is a case-by-case scenario depending on how the original boilerplate was setup. Lookout for symlinks in the plugins if it's an original copeland boilerplate.)
 
 7.) For the staging environment, add the below code snippet to the .htaccess file that is created one level above html, which includes the .httpasswd stuff:
 
-```<FilesMatch "wp-cron\.php$">
+```
+<FilesMatch "wp-cron\.php$">
 
 Satisfy Any
 
