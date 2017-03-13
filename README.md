@@ -29,6 +29,27 @@ define('WP_DEFAULT_THEME', 'taco-theme');
 define('WP_AUTO_UPDATE_CORE', 'minor');
 ```
 
+5.) To enable WP auto-updates locally, you need to add a filter to the project to ensure the .git files don't keep WP from updating.
+
+```
+function allow_local_autoupdates( $checkout, $context) {
+  return false;
+}
+
+add_filter( 'automatic_updates_is_vcs_checkout', 'allow_local_autoupdates', 10, 2);
+```
+
+6.) Don't let warnings show up on production server (this should already be enabled but services like MT don't suppress errors on their servers). All our sites should have an ENVIRONMENT variable so just make sure of this.
+
+```
+/** no errors on production **/
+if(ENVIRONMENT === ENVIRONMENT_PROD) {
+  error_reporting(0);
+  @ini_set('display_errors', 0);
+}
+```
+
+
 ### Changes to `.htaccess`
 
 5.) Update the `.htaccess` inside `/html` to include the below WP stable code snippet to include the `/wordpress/` path as seen below:
