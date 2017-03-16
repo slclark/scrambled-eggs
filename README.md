@@ -88,7 +88,7 @@ Allow from all
 </FilesMatch>
 ```
 
-8.) Don't forget to test the robots.txt file as some sites use a redirect to point to a template, check the template file paths are working correctly.
+8.) Don't forget to test the robots.txt file as some sites use a redirect to point to a template in the theme, so check that the template file paths are working correctly. Another thing to do is to remove `Disallow: /wp-includes/` because it's no longer best practices and certain .js files get loaded onto all pages that are located in this directory. Based on this yoast article from Feb. 2017, https://yoast.com/wordpress-robots-txt-example/
 
 This is to enable auto-updates on staging by allowing the wp-cron.php to run even when the site is password protected.
 
