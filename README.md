@@ -88,6 +88,8 @@ Allow from all
 </FilesMatch>
 ```
 
+8.) Don't forget to test the robots.txt file as some sites use a redirect to point to a template, check the template file paths are working correctly.
+
 This is to enable auto-updates on staging by allowing the wp-cron.php to run even when the site is password protected.
 
 
