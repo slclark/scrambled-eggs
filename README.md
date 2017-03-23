@@ -72,20 +72,29 @@ if(ENVIRONMENT === ENVIRONMENT_PROD) {
 
 5.) cd into `/html` and run `composer install`. When finished running, delete `wp-content` in the `wordpress` directory.
 
+> OPTIONAL - Instead of running `composer install` in the `/html` directory, copy `composer.json` up one directory and update any references to `vendor` to point to this directory instead.  The main one to update is the autoload script in `wp-config.php`.  This will only work on sites that we are deploying the entire directory structure and if there's not any crazy relative directory linking in the project, but it is a little cleaner to not expose the `vendor` directory publicly.
+
 6.) Deal with Taco and installing it so it works for the website (this is a case-by-case scenario depending on how the original boilerplate was setup. Lookout for symlinks in the plugins if it's an original copeland boilerplate.)
 
-7.) For the staging environment, add the below code snippet to the .htaccess file that is created one level above html, which includes the .httpasswd stuff:
+7.) For the staging environment, add the below code snippet to the .htaccess file that is created one level above html, which includes the .htpasswd stuff:
 
 ```
-<FilesMatch "wp-cron\.php$">
+# Require password for staging
+AuthName "Restricted Area"
+AuthType Basic
+AuthUserFile /var/www/vhosts/boulder-shelter/.htpasswd
+AuthGroupFile /
+Require valid-user
 
 Satisfy Any
+Order deny,allow
+Deny from all
+Allow from env=!PROTECTED_ENV
 
-Order allow,deny
-
-Allow from all
-
+<FilesMatch "^wp-cron\.php$">
+  Allow from all
 </FilesMatch>
+
 ```
 
 8.) Don't forget to test the robots.txt file as some sites use a redirect to point to a template in the theme, so check that the template file paths are working correctly. Another thing to do is to remove `Disallow: /wp-includes/` because it's no longer best practices and certain .js files get loaded onto all pages that are located in this directory. Based on this yoast article from Feb. 2017, https://yoast.com/wordpress-robots-txt-example/
